@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>vendingMachine</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link rel="stylesheet" href="styles.css" />
+
+        <style>
+            .header {
+                position: sticky;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <a href="vendingMachine.html" class="back-link">back</a>
+            <h2>Products</h2>
+            <button id="theme-toggle" class="theme-button">
+                <i id="sun-icon" class="fas fa-sun hidden"></i>
+                <i id="moon-icon" class="fas fa-moon"></i>
+            </button>
+        </header>
+        <div class="showBtn">
+            <button id="showAllProductsBtn" type="button">Add Product to Vending Machine</button>
+        </div>
+
+        <div id="showAllProductsModal" class="modal">
+            <div class="modal-content">
+                <div class="moda-heading">
+                    <h2>All Products</h2>
+                    <span id="closeProductsModalBtn" class="close-btn">&times;</span>
+                </div>
+                <div id="productsDataDiv"></div>
+
+                <button class="add-product" id="linkToAddProductBtn" onclick="window.location.href = `items.html`;">
+                    Add Product
+                </button>
+            </div>
+        </div>
+        <div id="EditQuantityModal" class="modal">
+            <div class="modal-content">
+                <span id="closeEditProductsModalBtn" class="close-btn">&times;</span>
+                <h2>Edit Quantity of item</h2>
+                <div id="editQuantityDiv"></div>
+            </div>
+        </div>
+        <div id="AddQuantityModal" class="modal">
+            <div class="modal-content">
+                <span id="closeAddQuantityModalBtn" class="close-btn">&times;</span>
+                <h2>Add Product to Vending Machine</h2>
+                <div id="addQuantityDiv">
+                    <form id="addQuantityForm">
+                        <label for="quantityInput">Enter Quantity:</label>
+                        <input type="number" id="quantityInput" min="1" required />
+                        <button type="button" id="addQuantitySubmitBtn">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="loader" class="loader" style="display: none"></div>
+        <div id="errorMessage" class="error" style="display: none"></div>
+        <div id="productsContainer" class="grid-container"></div>
+        <script src="js/prdct.js"></script>
+        <script src="js/theme_btn.js"></script>
+    </body>
+</html>

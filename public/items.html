@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vending Machine Products</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="sidebar">
+            <h2>Navigation</h2>
+            <a href="#" data-page="vendingMachines" id="vendingMachinesLink"
+                ><i class="fas fa-cogs"></i> Vending Machines</a
+            >
+            <a href="#" data-page="products" id="productsLink" class="active"><i class="fas fa-box"></i> Products</a>
+            <a href="#" data-page="report" id="reportLink"><i class="fas fa-chart-line"></i> Report</a>
+        </div>
+        <div class="main">
+            <header class="header">
+                <button class="menu-button"><i class="fas fa-bars"></i> Menu</button>
+                <h2>Products</h2>
+                <button id="theme-toggle" class="theme-button">
+                    <i id="sun-icon" class="fas fa-sun hidden"></i>
+                    <i id="moon-icon" class="fas fa-moon"></i>
+                </button>
+            </header>
+            <div class="search_add">
+                <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()" />
+                <button class="add-product" onclick="openModal()">+ Add Product</button>
+            </div>
+
+            <div id="loader" class="loader" style="display: none"></div>
+            <div id="errorMessage" class="error" style="display: none"></div>
+            <div id="productsContainer" class="grid-container"></div>
+
+            <div id="add_item_Modal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-heading">
+                        <h2>Add Item</h2>
+                        <span class="close-btn" onclick="closeModal()">&times;</span>
+                    </div>
+                    <form id="addItemForm">
+                        <!-- Item Name -->
+                        <label for="item_name">Item Name:</label>
+                        <input
+                            type="text"
+                            id="item_name"
+                            name="item_name"
+                            placeholder="Enter item name"
+                            required
+                        /><br />
+
+                        <!-- Item Price -->
+                        <label for="item_cost">Item Price:</label>
+                        <input
+                            type="number"
+                            id="item_cost"
+                            name="item_cost"
+                            placeholder="Enter item price"
+                            step="0.01"
+                            required
+                        /><br />
+                        <!-- Item Image -->
+                        <label for="item_image">Image:</label>
+                        <input type="file" id="item_image" name="item_image" accept="image/*" /><br />
+
+                        <!-- Item Status -->
+                        <label for="availability">Status:</label>
+                        <select id="availability" name="availability" required>
+                            <option value="1">Available</option>
+                            <option value="0">Not Available</option>
+                        </select>
+                        <br />
+
+                        <button class="submit" type="submit">Save</button>
+                        <button class="cancel" type="button" onclick="closeModal()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="edit_item_Modal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-heading">
+                        <h2>Edit Item</h2>
+                        <span class="close-btn" onclick="closeEditModal()">&times;</span>
+                    </div>
+                    <form id="editItemForm">
+                        <label for="edit_item_name">Item Name:</label>
+                        <input
+                            type="text"
+                            id="edit_item_name"
+                            name="edit_item_name"
+                            placeholder="Enter item name"
+                            required
+                        /><br />
+
+                        <label for="edit_item_cost">Item Price:</label>
+                        <input
+                            type="number"
+                            id="edit_item_cost"
+                            name="edit_item_cost"
+                            placeholder="Enter item price"
+                            step="0.01"
+                            required
+                        /><br />
+
+                        <label for="edit_item_image">Image:</label>
+                        <input type="file" id="edit_item_image" name="edit_item_image" accept="image/*" /><br />
+                        <img id="image_preview" src="" alt="Current Image" style="max-width: 100px; margin-top: 10px" />
+                        <p id="image_note">(Current image will be kept if no new image is uploaded)</p>
+
+                        <label for="edit_availability">Status:</label>
+                        <select id="edit_availability" name="edit_availability" required>
+                            <option value="1">Available</option>
+                            <option value="0">Not Available</option>
+                        </select>
+                        <br />
+
+                        <div>
+                            <button class="submit" type="submit">Save</button>
+                            <button class="cancel" type="button" onclick="closeModal()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <footer>
+                <p>&copy;</p>
+            </footer>
+        </div>
+
+        <script src="js/item_2.js"></script>
+        <script src="js/theme_btn.js"></script>
+        <script src="js/menu.js"></script>
+    </body>
+</html>

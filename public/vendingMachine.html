@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Vending Machine</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="sidebar">
+            <h2>Navigation</h2>
+            <a href="#" data-page="vendingMachines"><i class="fas fa-cogs"></i> Vending Machines</a>
+            <a href="#" data-page="products" id="productsLink"><i class="fas fa-box"></i> Products</a>
+            <a href="#" data-page="report" id="reportLink"><i class="fas fa-chart-line"></i> Report</a>
+        </div>
+
+        <div class="main">
+            <div class="header">
+                <button class="menu-button"><i class="fas fa-bars"></i> Menu</button>
+                <h2>VentO</h2>
+                <button id="theme-toggle" class="theme-button">
+                    <i id="sun-icon" class="fas fa-sun hidden"></i>
+                    <i id="moon-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div id="vendingMachines" class="page">
+                <div class="sub-heading">
+                    <h2>Vending Machines</h2>
+                    <div class="vending-btn">
+                        <button class="add-button" onclick="openVendingMachine()">
+                            <i class="fas fa-plus"></i>Add Vending Machine
+                        </button>
+                    </div>
+                </div>
+                <div id="machineData"></div>
+            </div>
+
+            <div id="products" class="page hidden"></div>
+            <div id="report" class="page hidden"></div>
+        </div>
+
+        <div id="addVendingModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <div class="modal-heading">
+                    <h2>Add Vending Machine</h2>
+                    <span class="close-btn" onclick="closeAddModal()">&times;</span>
+                </div>
+                <form id="addVendingForm">
+                    <label for="vendorName">Vendor Name:</label>
+                    <input type="text" id="vendorName" name="vendorName" required /><br />
+
+                    <label for="school">School:</label>
+                    <input type="text" id="school" name="school" required /><br />
+
+                    <label for="block">Block:</label>
+                    <input type="text" id="block" name="block" required /><br />
+
+                    <label for="floor">Floor:</label>
+                    <input type="text" id="floor" name="floor" required /><br />
+
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="1">Active</option>
+                        <option value="2">Inactive</option>
+                        <option value="3">Under Maintenance</option>
+                        <option value="4">Out of Service</option>
+                    </select>
+                    <br />
+                    <h3>Select Payment Methods:</h3>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_1" name="paymentMethods" value="1" />
+                        <label for="payment_1">Cash</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_2" name="paymentMethods" value="2" />
+                        <label for="payment_2">PayNow</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_3" name="paymentMethods" value="3" />
+                        <label for="payment_3">EZ-Link</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_4" name="paymentMethods" value="4" />
+                        <label for="payment_4">NETS</label>
+                    </div>
+
+                    <button class="submit" type="submit"><i class="fas fa-save"></i>Save</button>
+                    <button class="cancel" type="button" onclick="closeAddModal()">
+                        <i class="fas fa-times"></i>Cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="editModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <div class="modal-heading">
+                    <h2>Edit Vending Machine</h2>
+
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                </div>
+                <form id="editForm">
+                    <label for="editVendorName">Vendor Name:</label>
+                    <input type="text" id="editVendorName" name="vendorName" /><br />
+
+                    <label for="editSchool">School:</label>
+                    <input type="text" id="editSchool" name="school" /><br />
+
+                    <label for="editBlock">Block:</label>
+                    <input type="text" id="editBlock" name="block" /><br />
+
+                    <label for="editFloor">Floor:</label>
+                    <input type="text" id="editFloor" name="floor" /><br />
+
+                    <label for="editStatus">Status:</label>
+                    <select id="editStatus" name="Status">
+                        <option value="1">Active</option>
+                        <option value="2">Inactive</option>
+                        <option value="3">Under Maintenance</option>
+                        <option value="4">Out of Service</option>
+                    </select>
+                    <br />
+
+                    <h3>Select Payment Methods:</h3>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_1" name="paymentMethods" value="Cash" />
+                        <label for="payment_1">Cash</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_2" name="paymentMethods" value="PayNow" />
+                        <label for="payment_2">PayNow</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_3" name="paymentMethods" value="EZ-Link" />
+                        <label for="payment_3">EZ-Link</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="payment_4" name="paymentMethods" value="NETS" />
+                        <label for="payment_4">NETS</label>
+                    </div>
+
+                    <button class="submit" type="submit"><i class="fas fa-save"></i>Save</button>
+                    <button class="cancel" type="button" onclick="closeModal()">
+                        <i class="fas fa-times"></i>Cancel
+                    </button>
+                </form>
+                <footer>vendingMachine</footer>
+            </div>
+        </div>
+        <script src="js/menu.js"></script>
+
+        <script src="js/script.js"></script>
+        <script src="js/theme_btn.js"></script>
+    </body>
+</html>

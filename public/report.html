@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vending Machine Reports</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="sidebar">
+            <h2>Navigation</h2>
+            <a href="#" data-page="vendingMachines" id="vendingMachinesLink"
+                ><i class="fas fa-cogs"></i> Vending Machines</a
+            >
+            <a href="#" data-page="products" id="productsLink" class="active"><i class="fas fa-box"></i> Products</a>
+            <a href="#" data-page="report" id="reportLink"><i class="fas fa-chart-line"></i> Report</a>
+        </div>
+        <div class="main">
+            <header class="header">
+                <button class="menu-button"><i class="fas fa-bars"></i> Menu</button>
+                <h2>Vending Machine Reports</h2>
+                <button id="theme-toggle" class="theme-button">
+                    <i id="sun-icon" class="fas fa-sun hidden"></i>
+                    <i id="moon-icon" class="fas fa-moon"></i>
+                </button>
+            </header>
+
+            <div class="report-container" id="lowStockAlert">
+                <h2>Low Stock Alert</h2>
+                <table id="lowStockTable">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Number of Items</th>
+                            <th>Vending Machine</th>
+                            <th>Stock Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="report-container" id="mostPopularItems">
+                <h2>Most Popular Items Across Vending Machines</h2>
+                <div class="graph-container">
+                    <canvas id="popularItemsGraph"></canvas>
+                </div>
+            </div>
+
+            <div class="report-container" id="vendingMachinePerSchool">
+                <h2>Vending Machines per School</h2>
+                <table id="schoolVendingTable">
+                    <thead>
+                        <tr>
+                            <th>School Name</th>
+                            <th>Number of Vending Machines</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="background-blur" id="backgroundBlur"></div>
+
+            <footer>
+                <p>&copy; 2025 Vending Machine Management System | All Rights Reserved</p>
+            </footer>
+        </div>
+
+        <script src="js/report.js"></script>
+        <script src="js/theme_btn.js"></script>
+        <script src="js/menu.js"></script>
+    </body>
+</html>
