@@ -1,3 +1,3 @@
 ## Product page
-![Product page](website screenshots/Screenshot 2026-06-13 222408.png)
+![Product page](website-screenshots/Screenshot 2026-06-13 222408.png)
 
